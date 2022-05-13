@@ -1,0 +1,48 @@
+<div class="container pmt-5 medium-container">
+  <div class="row">
+    <section class="col-3 section_medium">
+      <ng-container>
+        <h5 class="text-success ml-3 mt-4 mb-3">Filtrar</h5>
+        <select class="custom-select mb-4" (change)="onSortSelected($event)">
+          <option [value]="0">
+            Seleccione una marca
+          </option>
+          <option [value]="1">
+            Precio mas Alto
+          </option>
+          <option [value]="2">
+            Precio mas Bajo
+          </option>
+        </select>
+        <h5 class="text-success ml-3">Categoria</h5>
+        <ul class="list-group my-3">
+          <li class="list-group-item" *ngFor="let m of marcas" [value]="m._id" (click)="onMarcaSelected(m._id)">
+            {{m.nombre}}
+          </li>
+        </ul>
+
+      </ng-container>
+    </section>
+    <section class="col-9 pmt-4 secion_medium_pagination">
+      <div class="d-flex justify-content-between align-items-center pb-2 head_medium">
+        <app-paging-header [totalCount]="totalCount" [pageSize]="pageSize" [pageNumber]="pageNumber">
+        </app-paging-header>
+        <div class="form-inline mt-2" *ngIf="productos">
+          <input (keyup.enter)="onSearch()" class="form-control mr-2" type="text" #search style="width: 300px;"
+            placeholder="Buscar">
+          <button (click)="onSearch()" class="btn btn-outline-primary my-2">Buscar</button>
+          <button (click)="onReset()" class="btn btn-outline-success ml-2 my-2">Reiniciar</button>
+        </div>
+      </div>
+      <div class="row mt-5 section__producto-item">
+        <div class="col-4 mb-4" *ngFor="let p of productos">
+          <app-producto-item [producto]="p"></app-producto-item>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+        <app-paging-footer [pageSize]="pageSize" [totalCount]="totalCount"
+          (pagingFooterChanged)="onPagingFooterChanged($event)"></app-paging-footer>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="bg-light px-4 text-uppercase font-weight-bold" style="padding: 1.20em;">
+  Orden de Compra
+</div>
+<div class="p-4">
+  <p class="font-italic mb-4">Los costos de envío se agregarán según las elecciones realizadas durante el pago</p>
+  <ul class="list-unstyled mb-4" *ngIf="(carritoTotal)">
+    <li class="d-flex justify-content-between py-3 border-bottom">
+      <strong class="text-muted">Order subtotal</strong>
+      <strong>{{carritoTotal.subtotal| currency}}</strong>
+    </li>
+    <li class="d-flex justify-content-between py-3 border-bottom">
+      <strong class="text-muted">Igv(19.5)</strong>
+      <strong>{{carritoTotal.igv| currency}}</strong>
+    </li>
+    <li class="d-flex justify-content-between py-3 border-bottom">
+      <strong class="text-muted">Total</strong>
+      <strong>{{carritoTotal.total | currency}}</strong>
+    </li>
+  </ul>
+</div>

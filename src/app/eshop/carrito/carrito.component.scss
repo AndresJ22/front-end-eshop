@@ -1,0 +1,25 @@
+.mtp-5 {
+  margin-top: 5rem;
+}
+
+@media(max-width:480px) {
+  .container-medium {
+    max-width: 480px !important;
+    margin-top: 10rem !important;
+  }
+
+  .carrito-medium__container .row .mb-1 {
+    margin: 0 !important;
+    padding: 0;
+
+  }
+
+  .oder-medium {
+    flex-direction: column;
+  }
+
+  .oder-medium .offset-6 {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}

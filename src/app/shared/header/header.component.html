@@ -1,0 +1,36 @@
+<div class="d-flex flex-column flex-md-row align-items-center justify-content-between
+p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+  <img src="/assets/images/logo.png" alt="logo" style="max-height: 70px;" alt="logo" class="logo" (click)="inicio()">
+
+  <nav class="my-2 my-md-0 mr-md-3 text-uppercase" style="font-size:larger;">
+    <!-- <a class="p-2 text-dark" [routerLink]="['/']" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">Home</a> -->
+    <a class="p-2 text-dark" (click)="inicio()" routerLinkActive=" active">Comprar</a>
+
+  </nav>
+  <div class="d-flex align-items-center">
+    <a (click)="verCarrito()" class="position-relative">
+      <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
+      <div *ngIf="carritoTotal" class="cart-no">{{carritoTotal.items.length}}</div>
+    </a>
+
+
+    <ng-container>
+      <div class="dropdown ml-3 mr-5" dropdown>
+        <a class="dropdown-toggle" style="cursor: pointer" dropdownToggle>
+          <strong>Bienvenido a Eshop</strong>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+          <a (click)="verCarrito()" class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-shopping-cart mr-3"></i> ver carrito
+          </a>
+
+          <a routerLink="/orden" class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-history mr-3"></i> ver orden
+          </a>
+
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container mtp-5 container-medium">
+  <div *ngIf="carrito === null">
+    <p>No hay producos en tu carrito</p>
+  </div>
+  <div *ngIf="carrito as c">
+    <div class="pb-5">
+      <div class="container carrito-medium__container">
+        <div class="row">
+          <div class="col-12 py-5 mb-1">
+            <div class="table-responsive">
+              <div class="table">
+                <thead>
+                  <tr>
+                    <th class="border-0 bg-light" scope="col">
+                      <div class="p-2 px-3 text-uppercase">Producto</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="p-2 text-uppercase">Precio</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="p-2 text-uppercase">Cantidad</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="p-2 text-uppercase">Total</div>
+                    </th>
+                    <th scope="col" class="border-0 bg-light">
+                      <div class="p-2 text-uppercase">Eliminar</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of carrito.items">
+                    <th scope="row">
+                      <div class="p-2">
+                        <img src="{{i.fotoUrl}}" alt="{{i.nombreProducto}}" class="img-fluid" style="max-height: 50px;">
+                        <div class="ml-3 d-inline-block align-middle">
+                          <h5 class="mb-0">
+                            <a routerLink="/carrito/{{i.idCarritoItem}}" class="text-dark">{{i.nombreProducto}}
+                            </a>
+                          </h5>
+                          <span class="text-muted font-weight-normal font-italic d-bloc">
+                            categoria: {{i.categoria.nombre}}
+                          </span>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle">
+                      <strong>{{i.precio | currency}}</strong>
+                    </td>
+                    <td class="align-middle">
+                      <div class="d-flex align-items-center">
+                        <i (click)="decrementItemCantidad(i)" class="fa fa-minus-circle text-warning mr-2"
+                          style="cursor: pointer; font-size: 2em;"></i>
+                        <span class="font-weight-bold" style="font-size: 1.5em;">
+                          {{i.cantidad}}</span>
+                        <i (click)="incrementItemCantidad(i)" class="fa fa-plus-circle text-warning mx-2"
+                          style="cursor: pointer; font-size: 2em;"></i>
+                      </div>
+                    </td>
+                    <td class="align-middle">
+                      <strong>{{i.precio * i.cantidad}}</strong>
+                    </td>
+                    <td class="align-middle text-center">
+                      <a class="text-danger">
+                        <i (click)="eliminarCarritoItem(i)" class="fa fa-trash"
+                          style="font-size:2em; cursor:pointer;"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row  oder-medium">
+          <div class="col-6 offset-6">
+            <app-orden-total></app-orden-total>
+            <a class="btn btn-outline-primary py-2 btn-block">
+              Realizar Pago
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
